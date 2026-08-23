@@ -356,41 +356,235 @@ h1 {
    ========================= */
 
 .country-panel {
-
-  animation: country-panel-in 500ms
-  cubic-bezier(0.22, 1, 0.36, 1);
-  
   position: absolute;
+  top: 2rem;
+  right: 2rem;
 
-  top: 50%;
-  right: 3%;
+  width: min(420px, 90vw);
+  max-height: calc(100% - 4rem);
 
-  transform: translateY(-50%);
+  overflow: hidden;
 
-  width: min(360px, 30vw);
+  background: rgba(20, 24, 28, 0.92);
 
-  padding: 3rem 2.5rem;
+  backdrop-filter: blur(20px);
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(39, 40, 34, 0.97),
-      rgba(22, 23, 19, 0.97)
-    );
-
-  border: 1px solid rgba(213, 168, 91, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 
   border-radius: 24px;
 
   box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.55),
-    0 0 60px rgba(213, 168, 91, 0.06);
+    0 30px 80px rgba(0, 0, 0, 0.35);
 
-  backdrop-filter: blur(20px);
+  color: white;
 
   z-index: 10;
 
-  animation: panel-in 350ms ease-out;
+  animation:
+    country-panel-in
+    500ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+.country-panel-cover {
+  position: relative;
+
+  width: 100%;
+  height: 220px;
+
+  overflow: hidden;
+}
+
+.country-panel-cover img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transform: scale(1.02);
+}
+
+.country-panel-cover-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 45%,
+      rgba(20, 24, 28, 0.95)
+    );
+}
+.country-panel-content {
+  padding: 0 28px 28px;
+}
+
+.country-panel-heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  margin-top: -32px;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+.country-panel-flag {
+  font-size: 48px;
+
+  filter:
+    drop-shadow(
+      0 5px 12px
+      rgba(0, 0, 0, 0.35)
+    );
+}
+
+.country-panel-eyebrow {
+  margin: 0 0 4px;
+
+  font-size: 11px;
+
+  letter-spacing: 0.16em;
+
+  opacity: 0.55;
+}
+
+.country-panel h2 {
+  margin: 0;
+
+  font-size: 32px;
+
+  line-height: 1.05;
+}
+
+.country-panel-continent {
+  margin: 6px 0 0;
+
+  font-size: 14px;
+
+  opacity: 0.55;
+}
+
+.country-panel-line {
+  width: 100%;
+  height: 1px;
+
+  margin: 22px 0;
+
+  background:
+    rgba(255, 255, 255, 0.12);
+}
+
+.country-panel-description {
+  margin: 0;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+
+  opacity: 0.78;
+}
+
+.country-section-title {
+  margin: 28px 0 16px;
+
+  font-size: 10px;
+
+  letter-spacing: 0.18em;
+
+  opacity: 0.45;
+}
+
+.country-location-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+.country-location {
+  display: flex;
+
+  gap: 12px;
+}
+
+.location-dot {
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  margin-top: 7px;
+
+  border-radius: 50%;
+
+  background: currentColor;
+}
+
+.country-location h3 {
+  margin: 0;
+
+  font-size: 15px;
+}
+
+.country-location p {
+  margin: 4px 0 0;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+  opacity: 0.55;
+}
+
+.explore-button {
+  width: 100%;
+
+  margin-top: 28px;
+
+  padding: 14px 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border: 0;
+
+  border-radius: 12px;
+
+  background: white;
+
+  color: #14181c;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 200ms ease;
+}
+
+.explore-button:hover {
+  transform: translateY(-2px);
+}
+
+.explore-button span {
+  font-size: 18px;
 }
 
 @keyframes country-panel-in {
@@ -420,22 +614,31 @@ h1 {
 .country-panel-close {
   position: absolute;
 
-  top: 1.2rem;
-  right: 1.2rem;
+  top: 16px;
+  right: 16px;
 
-  width: 42px;
-  height: 42px;
+  z-index: 20;
 
-  border: 0;
+  width: 36px;
+  height: 36px;
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.2);
+
   border-radius: 50%;
 
-  background: #303129;
+  background:
+    rgba(0, 0, 0, 0.35);
 
-  color: #aaa89e;
+  color: white;
 
-  font-size: 1.5rem;
+  font-size: 24px;
+
+  line-height: 1;
 
   cursor: pointer;
+
+  backdrop-filter: blur(10px);
 }
 
 .country-panel-close:active {

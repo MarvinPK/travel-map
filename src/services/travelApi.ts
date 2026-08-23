@@ -121,15 +121,32 @@ const mockVisitedCountries: TravelCountry[] = [
       "Entre canaux, vélos, architecture et paysages de campagne, découverte des Pays-Bas.",
   },
 
-  {
-    countryCode: "CRI",
-    name: "Costa Rica",
-    flag: "🇨🇷",
-    continent: "Amérique du Nord",
-    year: 2024,
-    description:
-      "Une immersion dans une nature exceptionnelle entre jungle tropicale, volcans, plages et animaux sauvages.",
-  },
+{
+  countryCode: "CRI",
+  name: "Costa Rica",
+  flag: "🇨🇷",
+  continent: "Amérique du Nord",
+  year: 2024,
+
+  description:
+    "Une immersion dans une nature exceptionnelle entre jungle tropicale, volcans, plages et animaux sauvages.",
+
+  coverImage:
+    "/travel/costa-rica.JPG",
+
+  locations: [
+    {
+      name: "Manuel Antonio",
+      description:
+        "Jungle tropicale, plages et animaux sauvages.",
+    },
+    {
+      name: "Volcan Arenal",
+      description:
+        "Un des paysages emblématiques du Costa Rica.",
+    },
+  ],
+},
 
   {
     countryCode: "HUN",
