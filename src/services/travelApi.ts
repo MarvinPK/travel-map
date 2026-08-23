@@ -126,13 +126,34 @@ const mockVisitedCountries: TravelCountry[] = [
   name: "Costa Rica",
   flag: "🇨🇷",
   continent: "Amérique du Nord",
-  year: 2024,
+  year: 2026,
 
   description:
     "Une immersion dans une nature exceptionnelle entre jungle tropicale, volcans, plages et animaux sauvages.",
 
   coverImage:
-    "/travel/costa-rica.JPG",
+    "/travel/costa-rica.jpg",
+
+  photos: [
+    {
+      id: "cri-01",
+      url: "/travel/costa-rica.JPG",
+      caption: "La jungle tropicale",
+      location: "Manuel Antonio",
+    },
+    {
+      id: "cri-02",
+      url: "/travel/costa-rica-2.JPG",
+      caption: "Les paysages sauvages du Costa Rica",
+      location: "Tortugero",
+    },
+    {
+      id: "cri-03",
+      url: "/travel/costa-rica-3.JPG",
+      caption: "La faune du Costa Rica",
+      location: "Arenal",
+    },
+  ],
 
   locations: [
     {
@@ -147,7 +168,6 @@ const mockVisitedCountries: TravelCountry[] = [
     },
   ],
 },
-
   {
     countryCode: "HUN",
     name: "Hongrie",
