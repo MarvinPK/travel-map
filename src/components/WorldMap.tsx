@@ -8,6 +8,8 @@ const HEIGHT = 500;
 
 type WorldMapProps = {
   travelCountries: TravelCountry[];
+  selectedCountry: string | null;
+  onCountrySelect: (countryCode: string) => void;
 };
 
 type CountryFeature = {
@@ -25,10 +27,12 @@ type CountriesGeoJSON = {
   features: CountryFeature[];
 };
 
-function WorldMap({ travelCountries }: WorldMapProps) {
+function WorldMap({
+  travelCountries,
+  selectedCountry,
+  onCountrySelect,
+}: WorldMapProps) {
   const [countries, setCountries] = useState<CountriesGeoJSON | null>(null);
-
-  const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
 
   const [mapTransform, setMapTransform] = useState({
     x: 0,
@@ -44,6 +48,16 @@ function WorldMap({ travelCountries }: WorldMapProps) {
         console.error("Unable to load countries:", error);
       });
   }, []);
+
+  useEffect(() => {
+    if (!selectedCountry) {
+      setMapTransform({
+        x: 0,
+        y: 0,
+        scale: 1,
+      });
+    }
+  }, [selectedCountry]);
 
   const projection = useMemo(
     () =>
@@ -128,11 +142,11 @@ function WorldMap({ travelCountries }: WorldMapProps) {
       scale,
     });
 
-    setSelectedCountry(countryCode);
+    onCountrySelect(countryCode);
   };
 
   const resetMap = () => {
-    setSelectedCountry(null);
+    onCountrySelect(null);
 
     setMapTransform({
       x: 0,
@@ -191,53 +205,6 @@ function WorldMap({ travelCountries }: WorldMapProps) {
           })}
         </g>
       </svg>
-
-      {selectedCountry && (
-        <div className="country-panel">
-          {(() => {
-            const country = travelCountries.find(
-              (item) => item.countryCode === selectedCountry,
-            );
-
-            if (!country) {
-              return null;
-            }
-
-            return (
-              <>
-                <button
-                  className="country-panel-close"
-                  onClick={resetMap}
-                  aria-label="Close"
-                >
-                  ×
-                </button>
-
-                <div className="country-panel-flag">{country.flag}</div>
-
-                <p className="country-panel-eyebrow">
-                  MY JOURNEY · {country.year}
-                </p>
-
-                <h2>{country.name}</h2>
-
-                <p className="country-panel-continent">{country.continent}</p>
-
-                <div className="country-panel-line" />
-
-                <p className="country-panel-description">
-                  {country.description}
-                </p>
-
-                <button className="explore-button">
-                  Explore this journey
-                  <span>→</span>
-                </button>
-              </>
-            );
-          })()}
-        </div>
-      )}
     </div>
   );
 }

@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 
 import WorldMap from "./components/WorldMap";
+import CountryPanel from "./components/CountryPanel";
 
 import type { TravelCountry } from "./types/travel";
 import { getVisitedCountries } from "./services/travelApi";
 
 function App() {
   const [travelCountries, setTravelCountries] = useState<TravelCountry[]>([]);
+  const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
 
   useEffect(() => {
     getVisitedCountries()
@@ -27,7 +29,7 @@ function App() {
       <header className="travel-header">
         <div>
           <p className="eyebrow">MY JOURNEY</p>
-          <h1>World of travels</h1>
+          <h1>World of travels Lola & Marvin</h1>
         </div>
 
         <div className="travel-stats">
@@ -46,8 +48,23 @@ function App() {
       </header>
 
       <section className="map-section">
-        <WorldMap travelCountries={travelCountries} />
+        <WorldMap
+          travelCountries={travelCountries}
+          selectedCountry={selectedCountry}
+          onCountrySelect={setSelectedCountry}
+        />{" "}
       </section>
+
+      <CountryPanel
+        country={
+          travelCountries.find(
+            (country) => country.countryCode === selectedCountry,
+          ) ?? null
+        }
+        onClose={() => {
+          setSelectedCountry(null);
+        }}
+      />
 
       <footer className="travel-footer">
         <span className="legend-dot" />
