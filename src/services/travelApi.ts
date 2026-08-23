@@ -40,7 +40,6 @@ const mockVisitedCountries: TravelCountry[] = [
     description:
       "Entre Lisbonne, les côtes sauvages et les villages portugais, une découverte pleine de couleurs et de caractère.",
   },
-
   {
     countryCode: "ISL",
     name: "Islande",
@@ -49,6 +48,38 @@ const mockVisitedCountries: TravelCountry[] = [
     year: 2023,
     description:
       "Un voyage au cœur des volcans, glaciers, cascades et paysages sauvages de l'Islande.",
+    coverImage: "/travel/costa-rica.jpg",
+    photos: [
+      {
+        id: "isl-01",
+        url: "/travel/islande/01.jpg",
+        caption: "La jungle tropicale",
+        location: "Manuel Antonio",
+      },
+      {
+        id: "isl-02",
+        url: "/travel/islande/02.jpg",
+        caption: "Les paysages sauvages",
+        location: "Manuel Antonio",
+      },
+      {
+        id: "isl-03",
+        url: "/travel/islande/03.jpg",
+        caption: "Le volcan Arenal",
+        location: "Arenal",
+      },
+    ],
+
+    locations: [
+      {
+        name: "Manuel Antonio",
+        description: "Jungle tropicale, plages et animaux sauvages.",
+      },
+      {
+        name: "Volcan Arenal",
+        description: "Un des paysages emblématiques du Costa Rica.",
+      },
+    ],
   },
 
   {
@@ -121,53 +152,50 @@ const mockVisitedCountries: TravelCountry[] = [
       "Entre canaux, vélos, architecture et paysages de campagne, découverte des Pays-Bas.",
   },
 
-{
-  countryCode: "CRI",
-  name: "Costa Rica",
-  flag: "🇨🇷",
-  continent: "Amérique du Nord",
-  year: 2026,
+  {
+    countryCode: "CRI",
+    name: "Costa Rica",
+    flag: "🇨🇷",
+    continent: "Amérique du Nord",
+    year: 2026,
 
-  description:
-    "Une immersion dans une nature exceptionnelle entre jungle tropicale, volcans, plages et animaux sauvages.",
+    description:
+      "Une immersion dans une nature exceptionnelle entre jungle tropicale, volcans, plages et animaux sauvages.",
 
-  coverImage:
-    "/travel/costa-rica.jpg",
+    coverImage: "/travel/costa-rica.jpg",
 
-  photos: [
-    {
-      id: "cri-01",
-      url: "/travel/costa-rica.JPG",
-      caption: "La jungle tropicale",
-      location: "Manuel Antonio",
-    },
-    {
-      id: "cri-02",
-      url: "/travel/costa-rica-2.JPG",
-      caption: "Les paysages sauvages du Costa Rica",
-      location: "Tortugero",
-    },
-    {
-      id: "cri-03",
-      url: "/travel/costa-rica-3.JPG",
-      caption: "La faune du Costa Rica",
-      location: "Arenal",
-    },
-  ],
+    photos: [
+      {
+        id: "cri-01",
+        url: "/travel/costa-rica/01.jpg",
+        caption: "La jungle tropicale",
+        location: "Manuel Antonio",
+      },
+      {
+        id: "cri-02",
+        url: "/travel/costa-rica/02.jpg",
+        caption: "Les paysages sauvages",
+        location: "Manuel Antonio",
+      },
+      {
+        id: "cri-03",
+        url: "/travel/costa-rica/03.jpg",
+        caption: "Le volcan Arenal",
+        location: "Arenal",
+      },
+    ],
 
-  locations: [
-    {
-      name: "Manuel Antonio",
-      description:
-        "Jungle tropicale, plages et animaux sauvages.",
-    },
-    {
-      name: "Volcan Arenal",
-      description:
-        "Un des paysages emblématiques du Costa Rica.",
-    },
-  ],
-},
+    locations: [
+      {
+        name: "Manuel Antonio",
+        description: "Jungle tropicale, plages et animaux sauvages.",
+      },
+      {
+        name: "Volcan Arenal",
+        description: "Un des paysages emblématiques du Costa Rica.",
+      },
+    ],
+  },
   {
     countryCode: "HUN",
     name: "Hongrie",

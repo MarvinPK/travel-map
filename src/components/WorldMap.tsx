@@ -145,16 +145,6 @@ function WorldMap({
     onCountrySelect(countryCode);
   };
 
-  const resetMap = () => {
-    onCountrySelect(null);
-
-    setMapTransform({
-      x: 0,
-      y: 0,
-      scale: 1,
-    });
-  };
-
   if (!countries) {
     return (
       <div className="map-loading">

@@ -1,6 +1,7 @@
 import type { TravelCountry } from "../types/travel";
 import "./countryPanel.css";
 import { useEffect, useState } from "react";
+import type { TouchEvent } from "react";
 
 type CountryPanelProps = {
   country: TravelCountry | null;
@@ -13,6 +14,7 @@ function CountryPanel({ country, onClose }: CountryPanelProps) {
   }
 
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   const photos = country.photos ?? [];
   const currentPhoto = photos[currentPhotoIndex];
@@ -20,6 +22,49 @@ function CountryPanel({ country, onClose }: CountryPanelProps) {
   useEffect(() => {
     setCurrentPhotoIndex(0);
   }, [country.countryCode]);
+
+  const showPreviousPhoto = () => {
+    if (photos.length <= 1) {
+      return;
+    }
+
+    setCurrentPhotoIndex(
+      (currentPhotoIndex - 1 + photos.length) % photos.length,
+    );
+  };
+
+  const showNextPhoto = () => {
+    if (photos.length <= 1) {
+      return;
+    }
+
+    setCurrentPhotoIndex((currentPhotoIndex + 1) % photos.length);
+  };
+
+  const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    setTouchStartX(event.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
+    if (touchStartX === null) {
+      return;
+    }
+
+    const touchEndX = event.changedTouches[0].clientX;
+    const deltaX = touchEndX - touchStartX;
+
+    const SWIPE_THRESHOLD = 50;
+
+    if (Math.abs(deltaX) >= SWIPE_THRESHOLD) {
+      if (deltaX > 0) {
+        showPreviousPhoto();
+      } else {
+        showNextPhoto();
+      }
+    }
+
+    setTouchStartX(null);
+  };
 
   return (
     <aside className="country-panel">
@@ -32,7 +77,11 @@ function CountryPanel({ country, onClose }: CountryPanelProps) {
       </button>
 
       {currentPhoto ? (
-        <div className="country-panel-gallery">
+        <div
+          className="country-panel-gallery"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           <img
             key={currentPhoto.id}
             src={currentPhoto.url}
@@ -46,11 +95,7 @@ function CountryPanel({ country, onClose }: CountryPanelProps) {
             <>
               <button
                 className="gallery-arrow gallery-arrow-left"
-                onClick={() =>
-                  setCurrentPhotoIndex(
-                    (currentPhotoIndex - 1 + photos.length) % photos.length,
-                  )
-                }
+                onClick={showPreviousPhoto}
                 aria-label="Previous photo"
               >
                 ‹
@@ -58,9 +103,7 @@ function CountryPanel({ country, onClose }: CountryPanelProps) {
 
               <button
                 className="gallery-arrow gallery-arrow-right"
-                onClick={() =>
-                  setCurrentPhotoIndex((currentPhotoIndex + 1) % photos.length)
-                }
+                onClick={showNextPhoto}
                 aria-label="Next photo"
               >
                 ›
