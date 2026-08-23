@@ -9,7 +9,7 @@ import { getVisitedCountries } from "./services/travelApi";
 function App() {
   const [travelCountries, setTravelCountries] = useState<TravelCountry[]>([]);
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
-
+  console.log("travelCountries", travelCountries);
   useEffect(() => {
     getVisitedCountries()
       .then((data) => setTravelCountries(data))

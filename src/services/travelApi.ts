@@ -48,23 +48,29 @@ const mockVisitedCountries: TravelCountry[] = [
     year: 2023,
     description:
       "Un voyage au cœur des volcans, glaciers, cascades et paysages sauvages de l'Islande.",
-    coverImage: "/travel/costa-rica.jpg",
+    coverImage: "/travel/test/01.jpg",
     photos: [
       {
         id: "isl-01",
         url: "/travel/islande/01.jpg",
-        caption: "La jungle tropicale",
-        location: "Manuel Antonio",
+        caption: "Cascade arc en ciel",
+        location: "Islande",
       },
       {
         id: "isl-02",
         url: "/travel/islande/02.jpg",
         caption: "Les paysages sauvages",
-        location: "Manuel Antonio",
+        location: "Islande",
       },
       {
         id: "isl-03",
         url: "/travel/islande/03.jpg",
+        caption: "Le volcan Arenal",
+        location: "Arenal",
+      },
+      {
+        id: "isl-04",
+        url: "/travel/islande/04.jpg",
         caption: "Le volcan Arenal",
         location: "Arenal",
       },
@@ -162,8 +168,7 @@ const mockVisitedCountries: TravelCountry[] = [
     description:
       "Une immersion dans une nature exceptionnelle entre jungle tropicale, volcans, plages et animaux sauvages.",
 
-    coverImage: "/travel/costa-rica.jpg",
-
+    coverImage: "/travel/costa-rica/01.jpg",
     photos: [
       {
         id: "cri-01",
@@ -180,6 +185,12 @@ const mockVisitedCountries: TravelCountry[] = [
       {
         id: "cri-03",
         url: "/travel/costa-rica/03.jpg",
+        caption: "Le volcan Arenal",
+        location: "Arenal",
+      },
+      {
+        id: "cri-04",
+        url: "/travel/costa-rica/04.jpg",
         caption: "Le volcan Arenal",
         location: "Arenal",
       },
